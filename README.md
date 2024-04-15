@@ -8,6 +8,10 @@ A telepítés feltételezi, hogy a számítógépre telepítve van a docker
 
 2. Docker containerek buildelése:
 
+WARN:
+ - windowson probléma lehet a $(pwd), ekkor ez lecserélhető "./"-re
+ - windowson probléma lehet a  -u "$(id -u):$(id -g)", ekkor ez törölhető
+
 ```shell
 docker run --rm \
     -u "$(id -u):$(id -g)" \
@@ -41,5 +45,5 @@ Ajánlott:
 ## Indítás
 
 ```shell
-./vendor/bin/sail up
+./vendor/bin/sail up -d && sail npm run dev
 ```
