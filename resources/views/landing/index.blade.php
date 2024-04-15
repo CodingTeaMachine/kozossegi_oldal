@@ -1,3 +1,9 @@
+@php
+    /**
+     * @var array{userData: array} $response
+     */
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -13,8 +19,15 @@
         @vite('resources/css/app.css')
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-            @foreach($response['userData'] as $userData)
-               <div> {{$userData->vezeteknev}} - {{$userData->keresztnev}} </div>
-            @endforeach
+            <table class="border-2 border-red-500">
+                <tr>
+                    <th>Vez.</th>
+                    <th>Ker.</th>
+                </tr>
+                @foreach($response['userData'] as $userData)
+                    <tr> <td>{{$userData->vezeteknev}} </td> <td>{{$userData->keresztnev}}</td> </tr>
+                @endforeach
+            </table>
+
     </body>
 </html>

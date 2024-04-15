@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Services\UserService;
+use Illuminate\View\View;
 
-class TestController
+readonly final class TestController
 {
-    public function getFelhasznaloList()
+    public function __construct(private UserService $userService)
+    {}
+
+    public function index(): View
     {
-        return DB::select(/** @lang Oracle */ 'SELECT AZONOSITO, VEZETEKNEV, KERESZTNEV FROM FELHASZNALO');
+        $userData  = $this->userService->getUsers();
+        return view('landing.index', ["response" => compact('userData')]);
     }
 }
