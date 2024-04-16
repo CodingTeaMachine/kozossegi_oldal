@@ -1,12 +1,21 @@
 <?php
 
+use App\Helpers\UserSession;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\UserController;
 use App\Middleware\AdminMiddleware;
 use App\Middleware\LoggedOutOnlyMiddleware;
 use App\Middleware\PrivateMiddleware;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    if(UserSession::isLoggedIn())
+        return Redirect::route('landingView');
+
+    return Redirect::route('loginView');
+});
 
 Route::middleware(LoggedOutOnlyMiddleware::class)->group(function () {
     Route::get('login', [UserController::class, 'loginView'])->name('loginView');

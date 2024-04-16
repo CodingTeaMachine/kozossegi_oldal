@@ -62,6 +62,7 @@ class ValidationBuilder
         $this->validationRules[] = Password::min(8)
             ->max(100)
             ->letters()
+			->numbers()
             ->mixedCase();
 
         return $this;

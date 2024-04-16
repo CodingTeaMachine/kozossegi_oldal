@@ -54,6 +54,7 @@
                             value="{{old('firstname')}}"
                         >
                     </div>
+
                     <div class="input-field">
                         <input
                             type="email"
@@ -84,6 +85,7 @@
                             value="{{old('password')}}"
                         >
                     </div>
+
                     <div class="input-field">
                         <input
                             type="date"
@@ -93,6 +95,17 @@
                             value="{{old('birthday')}}"
                         >
                     </div>
+
+                    <div class="text-left w-[90%] mx-auto px-3 pb-2">
+                        The password must...
+                        <ul class="list-disc ml-5">
+                            <li>be at least 8 characters long</li>
+                            <li>contain at least 1 uppercase letter</li>
+                            <li>contain at least 1 lowercase letter</li>
+                            <li>contain at least 1 number</li>
+                        </ul>
+                    </div>
+
                     <div class="input-field">
                         <input type="submit" id='signUp' name='signUp' value="Sign up">
                     </div>
