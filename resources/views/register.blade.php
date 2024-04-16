@@ -1,10 +1,7 @@
-@php use App\Enums\SessionKey;use Illuminate\Support\Facades\Session; @endphp
 @extends('layouts.login')
 
 @php
-
-    $errorsok = ['Hiba', 'Hiba', 'Hiba'];
-
+    use App\Enums\SessionKey;use Illuminate\Support\Facades\Session;
 @endphp
 
 @section('content')
