@@ -85,7 +85,7 @@
 .input-field input[type="submit"]{
     border: none;
     width: 80%;
-    font-family: Impact;
+    font-family: Impact, serif;
     background-color: hsl(217, 100%, 52%);
 }
 .input-field input[type="submit"]:hover{
