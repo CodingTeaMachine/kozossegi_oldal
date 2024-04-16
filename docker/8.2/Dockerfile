@@ -1,7 +1,5 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Taylor Otwell"
-
 ARG WWWGROUP
 ARG NODE_VERSION=20
 ARG POSTGRES_VERSION=15
@@ -47,15 +45,12 @@ ENV OCI_HOME="/usr/lib/oracle/21/client64/"
 ENV OCI_LIB_DIR="/usr/lib/oracle/21/client64/lib"
 ENV OCI_VERSION=21
 
-
 RUN  wget https://download.oracle.com/otn_software/linux/instantclient/2113000/oracle-instantclient-basic-21.13.0.0.0-1.el8.x86_64.rpm \
     && wget https://download.oracle.com/otn_software/linux/instantclient/2113000/oracle-instantclient-sqlplus-21.13.0.0.0-1.el8.x86_64.rpm \
     && wget https://download.oracle.com/otn_software/linux/instantclient/2113000/oracle-instantclient-devel-21.13.0.0.0-1.el8.x86_64.rpm \
     && alien -i oracle-instantclient-basic-21.13.0.0.0-1.el8.x86_64.rpm \
     && alien -i oracle-instantclient-sqlplus-21.13.0.0.0-1.el8.x86_64.rpm \
     && alien -i oracle-instantclient-devel-21.13.0.0.0-1.el8.x86_64.rpm
-#    && echo /usr/lib/oracle/21/client64/lib/ >> /etc/ld.so.conf.d/oracle.conf \
-#    && ldconfig
 
 RUN cd /usr/bin \
     && mv sqlplus64 sqlplus
@@ -79,12 +74,9 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
-
 COPY start-container /usr/local/bin/start-container
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.2/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
-
-EXPOSE 8000
 
 ENTRYPOINT ["start-container"]
