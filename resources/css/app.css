@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, serif;
+    color: hsl(223, 10%, 87%);
+}
+
+body{
+    background-color: #181A1B;
+    height:100vh;
+}
+
+.btn-primary {
+    @apply p-1.5 rounded-md;
+    border: none;
+    background-color: hsl(217, 100%, 52%);
+
+    &:hover {
+        background-color: hsl(217, 100%, 62%);
+        box-shadow: 0.5px 0.5px hsl(0, 0%, 15%), 0 0 4px hsl(217, 100%, 62%);
+    }
+
+    a, a:visited, a:hover, a:active {
+        @apply text-white;
+    }
+}
+
+a{
+    color: hsl(100, 100%, 35%);
+
+}
+a:visited{
+    color: hsl(100, 100%, 30%);
+}
+
+.container{
+    height: 75%;
+    width: 100%;
+    display: table;
+    border-spacing: 15px;
+    margin: auto;
+}
