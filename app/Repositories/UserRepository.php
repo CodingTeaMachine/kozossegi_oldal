@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Repositroies;
+namespace App\Repositories;
 
+use App\Models\Admin\UserDropdownDTO;
 use App\Models\Admin\UserEditDTO;
 use App\Models\Admin\UserTableDTO;
 use App\Models\Domain\SessionUser;
@@ -121,13 +122,14 @@ final class UserRepository
     public function userExists($id): bool
     {
         $rawRequest =
-            /** @lang Oracle */ '
+            /** @lang Oracle */
+            '
                SELECT COUNT(*) as count FROM FELHASZNALO WHERE AZONOSITO = :id
             ';
 
         $result = DB::selectOne($rawRequest, compact('id'));
 
-        return $result->count !== 0;
+        return intval($result->count) !== 0;
     }
 
     /**
@@ -177,6 +179,25 @@ final class UserRepository
         if($updatedRows === 0) {
             throw new DatabaseException("Error updating the user");
         }
+    }
+
+    /**
+     * @return array<UserDropdownDTO>
+     */
+    public function getAllForDropdown(): array
+    {
+        $rawRequest =
+            /** @lang Oracle */ '
+               SELECT AZONOSITO, VEZETEKNEV, KERESZTNEV
+                FROM FELHASZNALO
+            ';
+
+        $results = DB::select($rawRequest);
+
+        if(count($results) === 0)
+            return [];
+
+        return collect($results)->map(fn ($result) => UserDropdownDTO::getFromDBResult($result))->all();
     }
 
 }

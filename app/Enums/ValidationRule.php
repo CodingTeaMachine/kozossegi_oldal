@@ -12,6 +12,7 @@ enum ValidationRule: string
     case BEFORE = 'before';
     case REQUIRED_WITH = 'required_with';
     case SAME = 'same';
+    case DIFFERENT = 'different';
     case INTEGER = 'integer';
     case STRING = 'string';
     case NULLABLE = 'nullable';

@@ -1,8 +1,9 @@
-@php use App\Enums\UserRole;use App\Models\Admin\UserEditDTO; @endphp
 @extends('layouts.admin')
 
 @php
-
+    use App\Enums\UserRole;
+    use App\Models\Admin\UserEditDTO;
+    use App\Enums\SessionKey
     /**
      * @var UserEditDTO $user
      */
@@ -13,7 +14,11 @@
     <div class="mx-auto border border-white w-1/3">
         <div class="text-center text-2xl uppercase font-bold mt-5">Editing User</div>
 
-        @if ($errors->any())
+        @if(Session::has(SessionKey::ERROR->value))
+            <div class="mt-5 text-red-500">{{Session::get(SessionKey::ERROR->value)}}</div>
+        @endif
+
+    @if ($errors->any())
             <ul class="mt-5">
                 @foreach ($errors->all() as $error)
                     <li class="text-red-500">{{ $error }}</li>
@@ -157,7 +162,7 @@
             <input
                 type="submit"
                 class="btn btn-primary w-[80%] mx-auto cursor-pointer"
-                value="EDIT"
+                value="SUBMIT"
             />
         </form>
     </div>

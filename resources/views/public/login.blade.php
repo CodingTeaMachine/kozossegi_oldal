@@ -24,7 +24,7 @@
                 @endif
 
 
-            @if ($errors->any())
+                @if ($errors->any())
                     <ul class="mb-5">
                         @foreach ($errors->all() as $error)
                             <li class="text-red-500">{{ $error }}</li>

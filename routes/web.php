@@ -2,6 +2,7 @@
 
 use App\Helpers\UserSession;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\UserController;
 use App\Middleware\AdminMiddleware;
@@ -36,5 +37,14 @@ Route::middleware(PrivateMiddleware::class)->group(function() {
         Route::get('user/edit/{id}', [AdminController::class, 'userEditView'])->name('adminUserEditView')->where(['id'=> '[0-9]+']);
         Route::put('user/edit', [UserController::class, 'editUser']);
         Route::delete('user', [UserController::class, 'deleteUser']);
+
+        Route::get('friends', [AdminController::class, 'friendsView'])->name('adminFriendsView');
+        Route::get('friend/new', [AdminController::class, 'friendNewView'])->name('friendNewView');
+        Route::post('friend', [FriendController::class, 'create']);
+        Route::get('friend/edit/{senderId}/{receiverId}', [AdminController::class, 'friendEditView'])
+            ->name('adminUserEditView')
+            ->where(['senderId'=> '[0-9]+','receiverId'=> '[0-9]+']);
+        Route::put('friend/edit', [FriendController::class, 'editFriend']);
+        Route::delete('friend', [FriendController::class, 'deleteFriend']);
     });
 });

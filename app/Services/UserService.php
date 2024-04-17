@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Admin\UserDropdownDTO;
 use App\Models\Admin\UserEditDTO;
 use App\Models\Admin\UserTableDTO;
 use App\Models\Domain\SessionUser;
@@ -10,7 +11,7 @@ use App\Models\DTO\User\RegisterRequestDTO;
 use App\Models\DTO\User\UserGetDTO;
 use App\Models\DTO\User\UserStoreDTO;
 use App\Models\Errors\DatabaseException;
-use App\Repositroies\UserRepository;
+use App\Repositories\UserRepository;
 
 final readonly class UserService
 {
@@ -67,6 +68,12 @@ final readonly class UserService
         $this->userRepository->updateUser($userEditDTO);
     }
 
-
+    /**
+     * @return array<UserDropdownDTO>
+     */
+    public function getAllForDropdown(): array
+    {
+        return $this->userRepository->getAllForDropdown();
+    }
 
 }

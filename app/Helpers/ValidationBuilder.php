@@ -116,6 +116,13 @@ class ValidationBuilder
         return $this;
     }
 
+    public function different(string $fieldName): self
+    {
+        $this->validationRules[] = $this->getCompoundRule(ValidationRule::DIFFERENT, $fieldName);
+
+        return $this;
+    }
+
     private function getCompoundRule(ValidationRule $rule, $value): string
     {
         return $rule->value . ":" . $value;
