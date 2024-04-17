@@ -1,5 +1,5 @@
-@extends('layouts.inner_app')
+@extends('layouts.admin')
 
-@section('inner-content')
+@section('admin-content')
     <div>I am the admin now</div>
 @endsection

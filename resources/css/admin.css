@@ -1,0 +1,11 @@
+.admin-table{
+    @apply w-full border border-white ;
+
+    & th, & td {
+        @apply border border-white text-ellipsis overflow-hidden p-3;
+    }
+
+    .action-col {
+        @apply flex flex-row justify-center gap-3;
+    }
+}

@@ -7,7 +7,7 @@ use App\Models\DTO\RequestDTO;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequestDTO implements RequestDTO
+class UserEditRequestDTO implements RequestDTO
 {
     private function __construct(
         public string $lastname,
@@ -18,7 +18,7 @@ class RegisterRequestDTO implements RequestDTO
         public Carbon $birthday
     ) {}
 
-    public static function fromRequest(FormRequest $request): RegisterRequestDTO
+    public static function fromRequest(FormRequest $request): UserEditRequestDTO
     {
         return (new self(
             $request->input('lastname'),

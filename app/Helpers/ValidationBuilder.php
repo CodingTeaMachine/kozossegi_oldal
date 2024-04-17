@@ -28,6 +28,14 @@ class ValidationBuilder
         return $this;
     }
 
+    public function nullable(): self
+    {
+        $this->validationRules[] = ValidationRule::NULLABLE;
+
+        return $this;
+    }
+
+
     public function maxLength(int $value): self
     {
         $this->validationRules[] = $this->getCompoundRule(ValidationRule::MAX_LENGTH, $value);
@@ -53,6 +61,20 @@ class ValidationBuilder
     public function email(): self
     {
         $this->validationRules[] = ValidationRule::EMAIL;
+
+        return $this;
+    }
+
+    public function integer():self
+    {
+        $this->validationRules[] = ValidationRule::INTEGER;
+
+        return $this;
+    }
+
+    public function string():self
+    {
+        $this->validationRules[] = ValidationRule::STRING;
 
         return $this;
     }

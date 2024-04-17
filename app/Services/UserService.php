@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\Admin\UserEditDTO;
+use App\Models\Admin\UserTableDTO;
 use App\Models\Domain\SessionUser;
 use App\Models\DTO\User\LoginRequestDTO;
 use App\Models\DTO\User\RegisterRequestDTO;
@@ -36,5 +38,35 @@ final readonly class UserService
         $loginDTO = UserGetDTO::fromLoginRequest($requestDTO);
         return $this->userRepository->getForLogin($loginDTO);
     }
+
+    /**
+     * @return array<UserTableDTO>
+     */
+    public function getForAdminTable(): array
+    {
+        return $this->userRepository->getForAdminTable();
+    }
+
+    public function deleteById(int $id): void
+    {
+        $this->userRepository->deleteById($id);
+    }
+
+    public function getForAdminEdit(int $id): UserEditDTO|null
+    {
+        return $this->userRepository->getForAdminEdit($id);
+    }
+
+    /**
+     * @param UserEditDTO $userEditDTO
+     * @return void
+     * @throws DatabaseException
+     */
+    public function updateUser(UserEditDTO $userEditDTO): void
+    {
+        $this->userRepository->updateUser($userEditDTO);
+    }
+
+
 
 }

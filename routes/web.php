@@ -27,10 +27,14 @@ Route::middleware(LoggedOutOnlyMiddleware::class)->group(function () {
 
 Route::middleware(PrivateMiddleware::class)->group(function() {
     Route::get('landing', [LandingController::class, 'index'])->name('landingView');
-
     Route::put('logout', [UserController::class, 'logout']);
 
-    Route::middleware(AdminMiddleware::class)->group(function () {
-        Route::get('admin', [AdminController::class, 'index'])->name('adminView');
+    Route::prefix('admin')->middleware(AdminMiddleware::class)->name('adminGroup.')->group(function () {
+        Route::get('', [AdminController::class, 'index'])->name('adminView');
+
+        Route::get('users', [AdminController::class, 'usersView'])->name('adminUsersView');
+        Route::get('user/edit/{id}', [AdminController::class, 'userEditView'])->name('adminUserEditView')->where(['id'=> '[0-9]+']);
+        Route::put('user/edit', [UserController::class, 'editUser']);
+        Route::delete('user', [UserController::class, 'deleteUser']);
     });
 });

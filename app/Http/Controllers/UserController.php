@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Enums\SessionKey;
 use App\Helpers\UserSession;
+use App\Http\Requests\DeleteRequest;
 use App\Http\Requests\LoginPostRequest;
 use App\Http\Requests\RegisterPostRequest;
+use App\Http\Requests\UserEditRequest;
+use App\Models\Admin\UserEditDTO;
 use App\Models\DTO\User\LoginRequestDTO;
 use App\Models\DTO\User\RegisterRequestDTO;
 use App\Models\Errors\DatabaseException;
@@ -23,12 +26,12 @@ final readonly class UserController
 
     public function loginView(): View
     {
-        return view('login');
+        return view('public.login');
     }
 
     public function registerView(): View
     {
-        return view('register');
+        return view('public.register');
     }
 
     public function register(RegisterPostRequest $request): RedirectResponse
@@ -65,5 +68,26 @@ final readonly class UserController
     {
         UserSession::logout();
         return Redirect::route('loginView');
+    }
+
+    public function editUser(UserEditRequest $request): View|RedirectResponse
+    {
+        $editDTO = UserEditDTO::getFromRequest($request);
+
+        try {
+            $this->userService->updateUser($editDTO);
+        } catch (DatabaseException $exception) {
+            Session::flash(SessionKey::ERROR->value, $exception->getMessage());
+            return Redirect::back();
+        }
+
+        Session::flash(SessionKey::SUCCESSFUL_REGISTRATION->value);
+        return Redirect::route('adminGroup.adminUsersView');
+    }
+
+    public function deleteUser(DeleteRequest $request): RedirectResponse
+    {
+        $this->userService->deleteById(intval($request->input('id')));
+        return Redirect::route('adminGroup.adminUsersView');
     }
 }

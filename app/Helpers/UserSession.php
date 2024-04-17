@@ -36,5 +36,10 @@ class UserSession
         return self::get()->role->value === UserRole::ADMIN->value;
     }
 
+    public static function isCurrentUser(int $id): bool
+    {
+        return self::get()->id === $id;
+    }
+
 
 }

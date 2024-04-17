@@ -54,31 +54,6 @@
     margin-bottom: 16px;
 }
 
-.input-field{
-    margin-bottom: 6px;
-    text-align: center;
-    width: 100%;
-}
-.input-field input{
-    box-sizing: border-box;
-    width: 90%;
-    font-size: 20px;
-    padding: 6px 8px;
-    outline: 0;
-    border: 0.5px solid hsl(0, 0%, 55%);
-    color: hsl(0, 0%, 15%);
-    background-color: hsl(223, 10%, 87%);
-    box-shadow: 0.5px 0.5px hsl(0, 0%, 15%);
-    transition: all 0.2s ease-out;
-}
-.input-field input:hover{
-    background-color: hsl(0, 0%, 100%);
-    transition: all 0.2s ease-in;
-}
-.input-field input:focus{
-    background-color: hsl(0, 0%, 100%);
-}
-
 #lastname, #firstname{
     width: calc(45% - 2px);
 }

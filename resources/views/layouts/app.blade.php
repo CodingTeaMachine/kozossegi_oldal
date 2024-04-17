@@ -8,7 +8,6 @@
     <title>Visage!</title>
 </head>
 <body>
-    @section('content')
-    @show
+    @yield('content')
 </body>
 </html>

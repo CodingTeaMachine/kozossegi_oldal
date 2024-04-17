@@ -1,4 +1,4 @@
-@php use App\Helpers\UserSession;use App\Models\Domain\SessionUser; @endphp
+@php use App\Helpers\UserSession;use App\Models\Domain\SessionUser;use Illuminate\Support\Facades\Request; @endphp
 @extends('layouts.app')
 
 @php
@@ -15,27 +15,28 @@
 
     <div class="middle">
         @if(UserSession::isAdmin())
-            <button class="btn-primary">
-                <a href="/admin">Admin</a>
+            <button class="btn {{ str_starts_with(Route::currentRouteName(), 'adminGroup') ? 'btn-active': 'btn-primary'}}">
+                <a href="{{route('adminGroup.adminView')}}">Admin</a>
             </button>
         @endif
     </div>
 
     <div class="leftSide flex flex-row items-center gap-3">
         <div>
-            {{$loggedInUser->firstname}} @if($loggedInUser->nickname !== null) {{$loggedInUser->nickname}} @endif {{$loggedInUser->lastname}}
+            {{$loggedInUser->firstname}} @if($loggedInUser->nickname !== null)
+                {{$loggedInUser->nickname}}
+            @endif {{$loggedInUser->lastname}}
         </div>
 
         <form action="/logout" method="POST">
             @method('PUT')
             @csrf
 
-            <input type="submit" class="btn-primary" value="Logout">
+            <input type="submit" class="btn btn-primary" value="Logout">
         </form>
     </div>
 </nav>
 
 <div class="container">
-    @section('inner-content')
-    @show
+    @yield('inner-content')
 </div>
