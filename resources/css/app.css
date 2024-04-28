@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, serif;
+    color: hsl(223, 10%, 87%);
+}
+
+body{
+    background-color: #181A1B;
+    height:100vh;
+}
+
+.btn {
+    @apply p-1.5 rounded-md;
+    border: none;
+
+    a, a:visited, a:hover, a:active {
+        @apply text-white h-full w-full block;
+    }
+
+    &[disabled] {
+        @apply cursor-not-allowed;
+    }
+}
+
+.btn-primary {
+    background-color: hsl(217, 100%, 52%);
+
+    &:hover {
+        background-color: hsl(217, 100%, 62%);
+        box-shadow: 0.5px 0.5px hsl(0, 0%, 15%), 0 0 4px hsl(217, 100%, 62%);
+    }
+}
+
+.btn-active {
+    background-color: #3CB300FF !important;
+}
+
+.btn-danger {
+    @apply bg-red-600;
+
+    &[disabled] {
+        @apply bg-red-800;
+    }
+}
+
+a{
+    color: #3CB300FF;
+}
+a:visited{
+    color: #3CB300FF;
+}
+
+.container{
+    height: 75%;
+    width: 100%;
+    display: table;
+    border-spacing: 15px;
+    margin: auto;
+}
+
+.input-field{
+    margin-bottom: 6px;
+    text-align: center;
+    width: 100%;
+}
+.input-field {
+
+    input, select{
+        box-sizing: border-box;
+        width: 90%;
+        font-size: 20px;
+        padding: 6px 8px;
+        outline: 0;
+        border: 0.5px solid hsl(0, 0%, 55%);
+        color: hsl(0, 0%, 15%);
+        background-color: hsl(223, 10%, 87%);
+        box-shadow: 0.5px 0.5px hsl(0, 0%, 15%);
+        transition: all 0.2s ease-out;
+
+        &:hover {
+            background-color: hsl(0, 0%, 100%);
+            transition: all 0.2s ease-in;
+        }
+
+        &:focus {
+            background-color: hsl(0, 0%, 100%);
+        }
+    }
+}
