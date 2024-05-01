@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../js/externalLibs/all.js"></script>
-    <link rel="stylesheet" href="../../css/styles.css">
-    
-
-    <title>Visage</title>
-</head>
-<body>
-    <header> 
+@extends('layouts.inner_app')
+@section('js')
+    @vite('resources/js/profile.js')
+    @vite('resources/js/posts.js')
+@endsection
+<header> 
         <div class="left_header">
             <h1>V</h1>
             <input placeholder="Search">
@@ -19,7 +12,8 @@
         <div class="middle_header">
            <ul>
                 <li><a href="index.blade.php"><i class="fa-solid fa-house-chimney"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-users-line"></i></a></li>
+                <li><a href="groups.blade.php"><i class="fa-solid fa-users-line"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-user-gear"></i></i></a></li>
                 <li><a href="#toggle"><i class="fa-solid fa-bars"></i></a></li>
            </ul>
         </div>
@@ -92,7 +86,7 @@
                         <td colspan="2">
                             <form action="">
                                 <div>
-                                    <textarea name="comment" id="comment" rows="1"></textarea  placeholder="write something...">
+                                    <textarea name="comment" id="comment" placeholder="write something..."></textarea  >
                                     <input type="submit" name="submitComment" id="submitComment">
                                 </div>
                             </form>
@@ -189,6 +183,7 @@
                         <td><button>Delete</button></td>
                     </tr>
                 </table>
+                    <a href="" class="edit-profile"><button >Edit Profile</button></a>
             </div>
         </section>
         <aside>
@@ -324,17 +319,90 @@
             </table>
         </div>
         <div class="notifications">
+            <table>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> reacted to your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> commented on your Post</p></td> 
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><p><span>Kálmán János</span> has Posted a new Image</p></td> 
+                </tr>
+            </table>
+        </div>
+        <div class="notifications">
 
         </div>
         <div class="profile-sidebar">
             <ul>
-                <li><a href="profile.blade.php">Profile</a></li>
+                <li><a href="profile.blade.php" class="active">Profile</a></li>
                 <li><a href="">Log out</a></li>
             </ul>
         </div>
         </aside>
-    </main>
-    <script src="../../js/main.js"></script>
-    <script src="../../js/profile.js"></script>
-</body>
-</html>
+</main>
+   

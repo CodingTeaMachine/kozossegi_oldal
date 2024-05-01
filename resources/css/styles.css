@@ -2,11 +2,12 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    font-weight: bold;
 }
 html{
     scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
+
 }
 ::-webkit-scrollbar{
     background-color: hsl(0, 0%, 26%);
@@ -27,6 +28,13 @@ h1, h2, h3, h4{
 ul a{
     color: hsl(217, 100%, 52%);
 }
+button{
+    font-family: Impact;
+    letter-spacing: 1px;
+    font-weight: 1000;
+    text-shadow: 1px 1px 1px hsl(0, 0%, 2%);
+    border-radius: 3px;
+}
 button:hover,
 input[type='submit']:hover{
     cursor: pointer;
@@ -37,7 +45,6 @@ form input[type='submit']{
     background-color: hsl(217, 100%, 52%);
     box-sizing: content-box;
     width: 15%;
-    font-family: Impact;
     height: calc(60px - 24px);
     padding: 12px 8px;
     border-radius: 0 30px 30px 0;
@@ -236,7 +243,9 @@ main section .posting-container{
         width: 100%;
     }
 }
-
+.posting-container .create{
+    width: 100%;
+}
 .posting-container div h3{
     transition: color 0.3s linear;
     &:hover{
@@ -251,22 +260,29 @@ main section .posting-container{
     display: none;
     margin: 0 20px;
 }
-.input-container div{
+.cg-input-container{
+    width: 90%;
+    margin: 0 20px;
+}
+.input-container div,
+.cg-input-container div{
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.input-container input{
+.input-container input,
+.cg-input-container input{
     height: calc(60px - 24px);
     box-sizing: content-box;
     width: calc(50% - 24px);
     outline: 0;
-    width: 85%;
+    width: 60%;
     border: none;
     border-radius: 30px 0 0 30px;
     padding: 12px 8px;
-    font-size: 18px;
+    font-size: 24px;
     color: hsl(223, 10%, 87%);
     background-color: hsl(210, 2%, 23%);
     transition: all 0.3s ease-out;
@@ -277,26 +293,34 @@ main section .posting-container{
     }
 }
 
-/*Display posts*/
 
-main section .posts table{
+
+/*Display Posts, Groups*/
+
+main section .posts table,
+main section .groups table{
     margin: 15px auto;
     height: fit-content;
     max-height: 400px;
     max-width: 90%;
-    width: 100%;
     height: 70%;
     border-spacing: 10px;
     border-radius: 12px;
     background-color: hsl(210, 3%, 15%);
 }
-
+main section .groups table{
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: 1;
+}
 main section .posts tr:first-of-type th{
     display: flex;
     align-items: center;
 
 }
-
+main section .groups tr{
+    box-shadow: 2px 2px 2px hsl(0, 0%, 2%);
+}
 main section .posts th div{
     height: 40px;
     width: 40px;
@@ -307,7 +331,63 @@ main section .posts th div img,
 main section .posts td div img{
     height: 40px;
     width: 40px;
-    border-radius: 20px;
+    border-radius: 50%;
+}
+main section .groups td{
+    padding: 20px;
+    width: 20%;
+    text-align: center;
+    &:nth-of-type(2){
+        width: 60%;
+    }
+}
+main section .groups td h1{
+    font-size: 34px;
+}
+main section .groups ul{
+    width: 90%;
+    padding: 2px;
+    border-radius: 12px;
+    margin: auto;
+    display: flex;
+    background-color: hsl(210, 3%, 15%);
+}
+main section .groups li{
+    width: 50%;
+    height: 100%;
+    padding: 12px 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+main section .groups ul li a{
+    font-size: 24px;
+    text-decoration: none;
+    color: hsl(214, 5%, 74%);
+    transition: all 0.3s ease-out;
+    &:hover{
+        color: hsl(217, 100%, 57%);
+        transition: all 0.3s ease-in;
+    }
+}
+main section .groups td button{
+    color: hsl(223, 10%, 87%);
+    background-color: hsl(217, 100%, 52%);
+    font-size: 28px;
+    padding: 24px;
+    border: none;
+    transition: all 0.3s ease-out;
+    &:hover{
+        background-color: hsl(217, 100%, 57%);
+        transition: all 0.3s ease-in;
+    }
+}
+main section .groups td img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
 }
 main section .posts th h2{
     padding: 6px 12px;
@@ -401,6 +481,9 @@ main section .posts td{
         background-color: hsl(210, 1%, 31%);
         transition: all 0.2s ease-in;
     }
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 
@@ -452,12 +535,12 @@ main section .posts td{
     height: 30px;
     margin-right: 5px;
     margin-left: 5px;
-    border-radius: 50%;
-    background-color: hsl(217, 100%, 52%);
 }
 .messenger .message-friends li img{
     width: 30px;
     height: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
     border-radius: 50%;
 }
 .chat{
@@ -472,7 +555,9 @@ main section .posts td{
     align-items: center;
     justify-content: center;
 }
-
+.chat .chat-heading h1{
+    width: 100%;
+}
 .chat .chat-messages{
     padding: 10px 2px;
     display: flex;
@@ -534,6 +619,9 @@ main section .posts td{
     background-color: hsl(210, 2%, 23%);
     transition: all 0.2s ease-out;
     resize:none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 .chat .user-input form input[type="submit"]{
     border: none;
@@ -541,8 +629,9 @@ main section .posts td{
     width: 20%;
     height: 100%;
 }
-/*Users sidebar*/
-.users{
+/*Users sidebar && Notifications sidebar*/
+.users,
+.notifications{
     height: calc(100vh - 60px);
     position:fixed;
     background-color: hsl(210, 3%, 15%);
@@ -559,7 +648,6 @@ main section .posts td{
     height: 40px;
     width: 100%;
     display: flex;
-
 }
 .users ul li{
     height: 100%;
@@ -599,6 +687,13 @@ main section .posts td{
     height: calc(100% - 24px);
     text-align: center;
 }
+.notifications table tr td:last-of-type{
+    text-align: justify;
+}
+.notifications table tr td span{
+    font-weight: bolder;
+    color: hsl(217, 100%, 52%);
+}
 .users .suggestions tr td{
     &:nth-of-type(2){
         width: 50%;
@@ -625,11 +720,8 @@ main section .posts td{
 .users table tr td button{
     color: hsl(223, 10%, 87%);
     background-color: hsl(217, 100%, 52%);
-    font-family: Impact;
     font-size: 20px;
-    padding: 12px 16px;
-    height: 100%;
-    width: 100%;
+    padding: 12px 8px;
     border: none;
     transition: background-color 0.3s ease-out;
     &:hover{
@@ -638,24 +730,13 @@ main section .posts td{
     }
 }
 
-.users .requests tr td button{
-    padding: 12px 8px;
-}
 .users .requests tr td:last-of-type button{
     background-color: hsl(0, 100%, 40%);
     &:hover{
         background-color: hsl(0, 100%, 45%);
     }
 }
-/*Notifications sidebar*/
-.notifications{
-    position: fixed;
-    background-color: hsl(210, 3%, 15%);
-    width: 40%;
-    height: 95%;
-    transform: translateX(100%);
-    transition: all 0.3s linear;
-}
+
 .notifications table{
     width: 100%;
 }
@@ -681,7 +762,8 @@ main section .posts td{
     float: right;
 }
 .profile-sidebar ul li{
-    padding: 5px 10px;
+    font-size: 20px;
+    padding: 10px 15px;
 }
 .profile-sidebar ul li a{
     text-decoration: none;
@@ -760,13 +842,17 @@ main section .posts td{
     margin: auto;
     background-color: hsl(210, 3%, 15%);
     border-radius: 12px;
-    border-spacing: 5px 10px;
+    border-spacing: 0;
     padding: 10px;
 }
 .friends table tr,
 .user-data table tr{
     width: 100%;
     box-shadow: 1.5px 1.5px 1px hsl(0, 0%, 2%);    
+}
+.friends table tr td,
+.user-data table tr td{
+    max-width: min-content;
 }
 .user-data table tr td:first-of-type{
     font-size: 18px;
@@ -776,10 +862,8 @@ main section .posts td{
 .user-data table tr td button{
     color: hsl(223, 10%, 87%);
     background-color: hsl(210, 4%, 10%);
-    font-family: Impact;
     font-size: 20px;
-    padding: 4px 8px;
-    height: 100%;
+    padding: 12px 8px;
     width: 100%;
     border: none;
     transition: background-color 0.3s ease-out;
@@ -823,7 +907,24 @@ main section .posts td{
     }
    
 }
-
+.edit-profile{
+    text-decoration: none;
+}
+.edit-profile button{
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 1px 1px 2px hsl(0, 0%, 2%);
+    text-align: center;
+    font-size: 24px;
+    color: hsl(214, 5%, 74%);
+    padding: 8px 16px;
+    background-color: hsl(217, 100%, 52%);
+    &:hover{
+        background-color: hsl(217, 100%, 57%);
+    }
+}
 /*Selected item*/
 .active{
     color: hsl(217, 100%, 52%) !important;
@@ -850,14 +951,7 @@ main section .posts td{
         opacity: 1;
     }
 }
-@keyframes fadeOut{
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
+
 @media(max-width:1200px){
     header{
         flex-wrap: wrap;
@@ -877,6 +971,10 @@ main section .posts td{
     }
     .middle_header ul{
         justify-content: space-around;
+    }
+    .middle_header ul li {
+        padding: 0;
+        margin: 0;
     }
     .middle_header ul li:last-of-type{
         display: flex;
@@ -970,7 +1068,7 @@ main section .posts td{
         padding: 6px;
     }
     
-    .left_header button i{
+    .left_header button svg{
         margin: 0 8px;
         font-size: 15px;
     }
@@ -987,7 +1085,62 @@ main section .posts td{
         width: 35px;
         height: 35px;
     }
-    
+    .input-container input,
+    .cg-input-container input{
+        font-size: 18px;
+    }
+    main section .groups td img{
+        height: 60px;
+        width: 60px;
+    }
+    main section .groups td h1{
+        font-size: 24px;
+    }
+    main section .groups td button{
+        font-size: 20px;
+        padding: 12px;
+    }
+    .user-comment {
+        width: 100%;
+    }
+    .user-comment td div{
+        width: 100%;
+        height: 54px;
+    }
+    .user-comment td textarea{
+        min-height: calc(54px - 32px);
+        font-size: 22px;
+        padding: 12px 18px;
+        
+    }
+    .user-comment form input[type='submit']{
+        height: calc(54px - 24px);
+        padding: 12px 8px;
+    }
+    .user-data table{
+        border-collapse: collapse;
+    }
+    .friends table tr td,
+    .user-data table tr td{
+        font-size: 14px;
+
+    }
+    .user-data table tr td span{
+        font-size: 16px;
+    }
+    .friends table tr td button,
+    .user-data table tr td button{
+        font-size: 18px;
+        padding: 12px 6px;
+    }
+    .friends table tr td img{
+        width: 60px;
+        height: 60px;
+    }
+    .users table tr td button{
+        font-size: 16px;
+        padding: 8px 6px;
+    }
 }
 
 @media(max-width:480px){
@@ -1000,7 +1153,7 @@ main section .posts td{
     .left_header input{
         padding: 4px;
     }
-    .left_header button i{
+    .left_header button svg{
         margin: 0 4px;
         font-size: 12px;
     }
@@ -1012,8 +1165,13 @@ main section .posts td{
       
     }
     .middle_header ul li a{
-        padding: 10px 25px;
-      
+        padding: 0;
+        &:hover{
+            background-color: transparent;
+        }
+    }
+    .middle_header ul li .active{
+        border-bottom: none;
     }
     .right_header ul li{
         font-size: 9px;
@@ -1028,4 +1186,13 @@ main section .posts td{
     
 }
 
-
+@media(max-width:380px){
+    .user-comment td textarea{
+        max-height: calc(48px - 24px);
+        font-size: 20px;
+        padding: 12px 16px;
+    }
+    .user-comment form input[type='submit']{
+        height: calc(48px - 24px);
+    }
+}
