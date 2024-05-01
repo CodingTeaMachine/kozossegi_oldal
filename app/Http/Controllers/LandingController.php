@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 
-class LandingController
+readonly class LandingController
 {
+
+    public function __construct(private PostController $postController)
+    {}
 
     public function index(): View
     {
-        return view('protected.index');
+        return view('protected.index', ['response' =>['posts' => $this->postController->list()]]);
     }
 
 }

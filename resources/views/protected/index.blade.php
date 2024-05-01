@@ -1,4 +1,18 @@
+@php use App\Models\DTO\Post\PostsForUserDTO;use Illuminate\Support\Facades\Vite; @endphp
 @extends('layouts.inner_app')
+
+
+@php
+
+    /**
+     * @var array $response
+     */
+
+    /**
+    * @type PostsForUserDTO[] $posts
+     */
+    $posts = $response['posts'];
+@endphp
 
 <header>
     <div class="left_header">
@@ -42,92 +56,54 @@
             </div>
         </div>
         <div class="posts">
-            <table>
-                <tr>
-                    <th colspan="2">
-                        <div><img src="../../../public/Images/macska.jpg" alt="valaki"></div>
-                        <h2>Username</h2></th>
-                </tr>
-                <tr>
-                    <th colspan="2"><img src="../../../public/Images/forest.png"></th>
-                </tr>
-                <tr>
-                    <td class="reaction"><i class="fa-solid fa-thumbs-up"></i> Like</td>
-                    <td class="comment"><i class="fa-solid fa-comment"></i> Comment</td>
-                </tr>
-                <tr class="comments">
-                    <td colspan="2">
-                        <ul>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Azta kurva</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Bojler eladó</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>irni setucc</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque
-                                    tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus
-                                    saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="user-comment">
-                    <td colspan="2">
-                        <form action="">
+            @foreach($posts as $post)
+                <table>
+                    <tr>
+                        <th colspan="2">
+                           <div> <img src="{{Vite::asset('resources/Images/macska.jpg')}}" alt=""></div>
+                            <h2>{{$post->userName}} - {{$post->createdAt}}</h2></th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
                             <div>
-                                <textarea name="comment" id="comment" placeholder="write something..."></textarea>
-                                <input type="submit" name="submitComment" id="submitComment">
+                                {{$post->content}}
                             </div>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <th colspan="2"><h2>Username</h2></th>
-                </tr>
-                <tr>
-                    <th colspan="2"><img src="../../../public/Images/forest.png"></th>
-                </tr>
-                <tr>
-                    <td class="reaction"><i class="fa-solid fa-thumbs-up"></i> Like</td>
-                    <td class="comment"><i class="fa-solid fa-comment"></i> Comment</td>
-                </tr>
-                <tr class="comments">
-                    <td colspan="2">
-                        <ul>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Azta kurva</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Bojler eladó</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>irni setucc</p></li>
-                            <li>
-                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque
-                                    tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus
-                                    saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr class="user-comment">
-                    <td colspan="2">
-                        <form action="">
-                            <div>
-                                <textarea name="comment" id="comment" placeholder="write something..."></textarea>
-                                <input type="submit" name="submitComment" id="submitComment">
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{$post->likesCount}} (like)</td>
+                        <td>{{$post->dislikesCount}} (dislike)</td>
+                    </tr>
+                    <tr>
+                        <td class="reaction"><i class="fa-solid fa-thumbs-up"></i> Like</td>
+                        <td class="comment"><i class="fa-solid fa-comment"></i> Comment ({{count($post->comments)}})</td>
+                    </tr>
+                    <tr class="comments">
+                        <td colspan="2">
+                            <ul>
+                                @foreach($post->comments as $comment)
+                                    <li>
+                                        <div>
+                                            <img src="{{Vite::asset('resources/Images/macska.jpg')}}" alt="">
+                                        </div>
+                                        <p>{{$comment->content}}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="user-comment">
+                        <td colspan="2">
+                            <form action="">
+                                <div>
+                                    <textarea name="comment" id="comment" placeholder="write something..."></textarea>
+                                    <input type="submit" name="submitComment" id="submitComment">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            @endforeach
         </div>
     </section>
     <aside>
@@ -354,7 +330,13 @@
         <div class="profile-sidebar">
             <ul>
                 <li><a href="profile.blade.php">Profile</a></li>
-                <li><a href="">Log out</a></li>
+                <li>
+                    <form action="/logout" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <input type="submit" value="Logout">
+                    </form>
+                </li>
             </ul>
         </div>
     </aside>

@@ -29,7 +29,7 @@ class SessionUser
         ));
     }
 
-    public static function fromSession(): self
+    public static function getFromSession(): self
     {
         $sessionData = json_decode(Session::get(SessionKey::USER->value));
 

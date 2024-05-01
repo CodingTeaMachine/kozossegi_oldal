@@ -3,14 +3,14 @@
 namespace App\Repositories;
 
 use App\Models\Domain\Comment;
-use App\Models\DTO\Post\PostForUserDTO;
+use App\Models\DTO\Post\PostsForUserDTO;
 use Illuminate\Support\Facades\DB;
 
 class PostRepository
 {
     /**
      * @param int $userId
-     * @return PostForUserDTO[]
+     * @return PostsForUserDTO[]
      */
     public function getRecommendationsForUser(int $userId): array
     {
@@ -20,11 +20,10 @@ class PostRepository
             ';
 
         $result = DB::select($rawRequest, ['userId' => $userId]);
-
         $posts = [];
 
         foreach ($result as $post) {
-            $posts[] = PostForUserDTO::getFromDBResult($post)
+            $posts[] = PostsForUserDTO::getFromDBResult($post)
                 ->setComments($this->getCommentsForPost($post->postid, $post->posttype));
         }
 

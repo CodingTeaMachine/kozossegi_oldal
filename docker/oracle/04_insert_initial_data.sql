@@ -68,6 +68,20 @@ Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (2,8);
 Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (2,9);
 Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (2,10);
 
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (1,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (2,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (3,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (4,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (5,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (6,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (7,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (8,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (9,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (10,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (11,13);
+Insert into ISMEROS (KERELMEZO_AZONOSITO,FOGADO_AZONOSITO) values (12,13);
+
+
 Insert into PRIVAT_UZENET (KULDO_AZONOSITO,SZOVEG,FOGADO_AZONOSITO) values (1,'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',3);
 Insert into PRIVAT_UZENET (KULDO_AZONOSITO,SZOVEG,FOGADO_AZONOSITO) values (3,'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',1);
 Insert into PRIVAT_UZENET (KULDO_AZONOSITO,SZOVEG,FOGADO_AZONOSITO) values (1,'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',3);

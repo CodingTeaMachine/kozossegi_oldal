@@ -6,7 +6,7 @@ use App\Enums\PostType;
 use App\Models\Domain\Comment;
 use Carbon\Carbon;
 
-class PostForUserDTO
+class PostsForUserDTO
 {
     /**
      * @var Comment[] $comments
@@ -36,7 +36,7 @@ class PostForUserDTO
 
     public static function getFromDBResult($dbResult): self
     {
-        return new PostForUserDTO(
+        return new PostsForUserDTO(
             intval($dbResult->postid),
             intval($dbResult->userid),
             $dbResult->username,

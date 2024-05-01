@@ -27,7 +27,7 @@ class UserSession
     public static function get(): SessionUser|null
     {
         return self::isLoggedIn()
-            ? SessionUser::fromSession()
+            ? SessionUser::getFromSession()
             : null;
     }
 

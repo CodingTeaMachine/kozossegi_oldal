@@ -84,7 +84,7 @@ header div{
     background-color: hsl(210, 2%, 23%);
     transition: all 0.2s ease-out;
 
-    &:hover, 
+    &:hover,
     &:focus{
         background-color: hsl(210, 1%, 31%);
         transition: all 0.2s ease-in;
@@ -94,7 +94,7 @@ header div{
 .left_header button{
     background-color: transparent;
     border: 0;
-   
+
 }
 
 .left_header button svg{
@@ -102,7 +102,7 @@ header div{
     font-size: 25px;
     color: rgb(105, 105, 105);
     text-shadow: 1px 1px 1px hsl(0, 0%, 2%);;
-    
+
 }
 
 .middle_header{
@@ -220,7 +220,7 @@ main section .posting-container{
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
-   
+
 }
 
 /*Posting*/
@@ -329,7 +329,7 @@ main section .posts td{
 .comment:hover{
     cursor: pointer;
     background-color: hsl(210, 1%, 31%);
-    
+
     transition: background-color 0.2s ease-in;
 }
 
@@ -346,7 +346,7 @@ main section .posts td{
 .comments ul{
     overflow-y: scroll;
     height: 240px;
-    
+
 }
 .comments ul li{
     margin: 10px;
@@ -438,7 +438,7 @@ main section .posts td{
         background-color: hsl(210, 1%, 31%);
         transition: background 0.3s ease-in;
     }
- 
+
 }
 .messenger .message-friends li .active{
     border-bottom: 4px solid hsl(217, 100%, 52%);
@@ -493,7 +493,7 @@ main section .posts td{
     max-width: 60%;
     padding: 9px 15px;
     border-radius: 24px;
-  
+
 }
 .chat .sent-chat{
     background-color: hsl(217, 100%, 52%);
@@ -553,7 +553,7 @@ main section .posts td{
     &::-webkit-scrollbar{
         display: none;
     }
-    
+
 }
 .users ul{
     height: 40px;
@@ -676,6 +676,12 @@ main section .posts td{
     box-shadow: 0 1px hsl(0, 0%, 2%);
     transform: translateX(100%);
     transition: all 0.1s linear;
+
+    input {
+        width: 100% !important;
+        background-color: inherit !important;
+        font-size: inherit !important;
+    }
 }
 .profile-sidebar ul{
     float: right;
@@ -700,11 +706,11 @@ main section .posts td{
     width: 90%;
     border-radius: 0 0 90px 90px;
     padding: 12px;
-    
+
 }
 .profile-main{
     text-align: center;
-    
+
 }
 .profile-main img{
     width: 240px;
@@ -766,7 +772,7 @@ main section .posts td{
 .friends table tr,
 .user-data table tr{
     width: 100%;
-    box-shadow: 1.5px 1.5px 1px hsl(0, 0%, 2%);    
+    box-shadow: 1.5px 1.5px 1px hsl(0, 0%, 2%);
 }
 .user-data table tr td:first-of-type{
     font-size: 18px;
@@ -821,7 +827,7 @@ main section .posts td{
     &:last-of-type{
         width: 15%;
     }
-   
+
 }
 
 /*Selected item*/
@@ -892,7 +898,7 @@ main section .posts td{
         visibility: hidden;
         height: 100%;
         width: 100%;
-        justify-content: center;  
+        justify-content: center;
     }
     .right_header ul li{
 
@@ -904,7 +910,7 @@ main section .posts td{
     }
     form input[type='submit']{
         font-size: 16px;
-        
+
     }
     main section{
         position: static;
@@ -916,7 +922,7 @@ main section .posts td{
     main section .posts td{
         font-size: 16px;
     }
-   
+
     main aside{
         box-sizing: border-box;
         height: 100vh;
@@ -943,7 +949,7 @@ main section .posts td{
         top: 0;
         bottom: 120px;
     }
-   
+
     main aside > .notifications{
         box-sizing: border-box;
         width: 100%;
@@ -969,14 +975,14 @@ main section .posts td{
         font-size: 14px;
         padding: 6px;
     }
-    
+
     .left_header button i{
         margin: 0 8px;
         font-size: 15px;
     }
     .middle_header ul li a{
         padding: 10px 25px;
-  
+
     }
 
     .right_header ul li{
@@ -987,7 +993,7 @@ main section .posts td{
         width: 35px;
         height: 35px;
     }
-    
+
 }
 
 @media(max-width:480px){
@@ -1005,15 +1011,15 @@ main section .posts td{
         font-size: 12px;
     }
 
-   
+
     .middle_header ul li{
         height: 100%;
         font-size: 18px;
-      
+
     }
     .middle_header ul li a{
         padding: 10px 25px;
-      
+
     }
     .right_header ul li{
         font-size: 9px;
@@ -1025,7 +1031,5 @@ main section .posts td{
     .showNav{
         top: 40px !important;
     }
-    
+
 }
-
-

@@ -6,28 +6,36 @@ CREATE OR REPLACE TYPE user_id_list IS TABLE OF INT;
 
 CREATE OR REPLACE FUNCTION get_friend_id_list(userId IN int) RETURN C##KOZOSSEGI_OLDAL.user_id_list IS
     userIds user_id_list := user_id_list();
+    iter_index PLS_INTEGER := 1;
+    found INT := 0;
 BEGIN
     FOR friend IN (SELECT FOGADO_AZONOSITO, KERELMEZO_AZONOSITO
                    FROM ISMEROS
                    WHERE KERELMEZO_AZONOSITO = userId
                       OR FOGADO_AZONOSITO = userId)
         LOOP
-            IF NOT userIds.EXISTS(friend.KERELMEZO_AZONOSITO) THEN
+
+            SELECT COUNT(*) INTO found FROM TABLE ( userIds ) WHERE COLUMN_VALUE = friend.KERELMEZO_AZONOSITO;
+
+            IF found = 0 THEN
                 userIds.EXTEND;
-                userIds(userIds.LAST) := friend.KERELMEZO_AZONOSITO;
+                userIds(iter_index) := friend.KERELMEZO_AZONOSITO;
+                iter_index := iter_index + 1;
             END IF;
 
-            IF NOT userIds.EXISTS(friend.FOGADO_AZONOSITO) THEN
+            SELECT COUNT(*) INTO found FROM TABLE ( userIds ) WHERE COLUMN_VALUE = friend.FOGADO_AZONOSITO;
+
+            IF found = 0 THEN
                 userIds.EXTEND;
-                userIds(userIds.LAST) := friend.FOGADO_AZONOSITO;
+                userIds(iter_index) := friend.FOGADO_AZONOSITO;
+                iter_index := iter_index + 1;
             END IF;
+
         END LOOP;
 
     RETURN userIds;
 END;
 /
-
-DROP TYPE post_comment_table;
 
 CREATE OR REPLACE TYPE post_comment AS OBJECT
 (
@@ -47,13 +55,13 @@ CREATE OR REPLACE FUNCTION get_comments(postId IN INT, postType IN VARCHAR2) RET
 BEGIN
 
     IF (postType = 'TEXT') THEN
-        FOR postComment IN (SELECT * FROM SZOVEGES_BEJEGYZES_KOMMENT WHERE SZOVEGES_BEJEGYZES_AZONOSITO = postId) LOOP
+        FOR postComment IN (SELECT * FROM SZOVEGES_BEJEGYZES_KOMMENT WHERE SZOVEGES_BEJEGYZES_AZONOSITO = postId ORDER BY ELKULDESI_IDO) LOOP
             post_comments.extend;
             post_comments(inter_index) := post_comment(postComment.AZONOSITO, postComment.SZOVEG, postComment.ELKULDESI_IDO, postComment.FELHASZNALO_AZONOSITO, get_username( postComment.FELHASZNALO_AZONOSITO), postId);
             inter_index := inter_index + 1;
         END LOOP;
     ELSE
-        FOR postComment IN (SELECT * FROM KEPES_BEJEGYZES_KOMMENT WHERE KEPES_BEJEGYZES_AZONOSITO = postId) LOOP
+        FOR postComment IN (SELECT * FROM KEPES_BEJEGYZES_KOMMENT WHERE KEPES_BEJEGYZES_AZONOSITO = postId ORDER BY ELKULDESI_IDO) LOOP
             post_comments.extend;
             post_comments(inter_index) := post_comment(postComment.AZONOSITO, postComment.SZOVEG, postComment.ELKULDESI_IDO, postComment.FELHASZNALO_AZONOSITO, get_username( postComment.FELHASZNALO_AZONOSITO), postId);
             inter_index := inter_index + 1;
@@ -70,10 +78,8 @@ CREATE OR REPLACE FUNCTION get_username(userId IN INT) RETURN VARCHAR2 IS
 BEGIN
 
     SELECT VEZETEKNEV, KERESZTNEV INTO firstname, lastname FROM FELHASZNALO WHERE AZONOSITO = userId;
-    RETURN firstname || lastname;
+    RETURN firstname || ' ' || lastname;
 END;
-
-DROP TYPE post_list_table;
 
 CREATE OR REPLACE TYPE post_recommendation AS OBJECT
 (
@@ -126,3 +132,67 @@ BEGIN
     RETURN post_list;
 END;
 /
+
+
+CREATE OR REPLACE TRIGGER trigger_kepes_bejegyzes_reakcio_aggregate_create_row
+    AFTER INSERT ON KEPES_BEJEGYZES
+    FOR EACH ROW
+BEGIN
+    INSERT INTO KEPES_BEJEGYZES_REAKCIO_AGGREGATE(BEJEGYZES_AZONOSITO) VALUES NEW.AZONOSITO;
+END;
+
+CREATE OR REPLACE TRIGGER trigger_szoveges_bejegyzes_reakcio_aggregate_create_row
+    AFTER INSERT ON SZOVEGES_BEJEGYZES
+    FOR EACH ROW
+BEGIN
+    INSERT INTO SZOVEGES_BEJEGYZES_REAKCIO_AGGREGATE(BEJEGYZES_AZONOSITO) VALUES NEW.AZONOSITO;
+END;
+
+
+CREATE OR REPLACE TRIGGER trigger_kepes_bejegyzes_reakcio_aggregate
+    AFTER INSERT ON KEPES_BEJEGYZES_REAKCIO
+    FOR EACH ROW
+BEGIN
+
+    IF (:NEW.REAKCIO = 1) THEN
+        UPDATE
+            KEPES_BEJEGYZES_REAKCIO_AGGREGATE
+        SET AGGREGALT_LIKE_MENNYISEG =
+            (SELECT AGGREGALT_LIKE_MENNYISEG
+             FROM KEPES_BEJEGYZES_REAKCIO_AGGREGATE
+             WHERE BEJEGYZES_AZONOSITO = :NEW.KEPES_BEJEGYZES_AZONOSITO) + 1
+        WHERE BEJEGYZES_AZONOSITO = :NEW.KEPES_BEJEGYZES_AZONOSITO;
+    ELSE
+        UPDATE
+            KEPES_BEJEGYZES_REAKCIO_AGGREGATE
+        SET AGGREGALT_DISLIKE_MENNYISEG =
+                (SELECT AGGREGALT_DISLIKE_MENNYISEG
+                 FROM KEPES_BEJEGYZES_REAKCIO_AGGREGATE
+                 WHERE BEJEGYZES_AZONOSITO = :NEW.KEPES_BEJEGYZES_AZONOSITO) + 1
+        WHERE BEJEGYZES_AZONOSITO = :NEW.KEPES_BEJEGYZES_AZONOSITO;
+    END IF;
+END;
+
+CREATE OR REPLACE TRIGGER trigger_szoveges_bejegyzes_reakcio_aggregate
+    AFTER INSERT ON SZOVEGES_BEJEGYZES_REAKCIO
+    FOR EACH ROW
+BEGIN
+
+    IF (:NEW.REAKCIO = 1) THEN
+        UPDATE
+            SZOVEGES_BEJEGYZES_REAKCIO_AGGREGATE
+        SET AGGREGALT_LIKE_MENNYISEG =
+                (SELECT AGGREGALT_LIKE_MENNYISEG
+                 FROM SZOVEGES_BEJEGYZES_REAKCIO_AGGREGATE
+                 WHERE BEJEGYZES_AZONOSITO = :NEW.SZOVEGES_BEJEGYZES_AZONOSITO) + 1
+        WHERE BEJEGYZES_AZONOSITO = :NEW.SZOVEGES_BEJEGYZES_AZONOSITO;
+    ELSE
+        UPDATE
+            SZOVEGES_BEJEGYZES_REAKCIO_AGGREGATE
+        SET AGGREGALT_DISLIKE_MENNYISEG =
+                (SELECT AGGREGALT_DISLIKE_MENNYISEG
+                 FROM SZOVEGES_BEJEGYZES_REAKCIO_AGGREGATE
+                 WHERE BEJEGYZES_AZONOSITO = :NEW.SZOVEGES_BEJEGYZES_AZONOSITO) + 1
+        WHERE BEJEGYZES_AZONOSITO = :NEW.SZOVEGES_BEJEGYZES_AZONOSITO;
+    END IF;
+END;
