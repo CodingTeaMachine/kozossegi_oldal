@@ -9,7 +9,7 @@ class LandingController
 
     public function index(): View
     {
-        return view('protected.landing');
+        return view('protected.index');
     }
 
 }
