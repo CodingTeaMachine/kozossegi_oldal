@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(messengerBtn.classList.contains('active') && window.innerWidth <= 1200){
             document.body.style.overflowY = "hidden";
         } else{
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowY = "scroll";
         }
         
     });
@@ -63,10 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
         notificationsDisplay.classList.remove('show');
         notificationsBtn.classList.remove('active');
         if(usersBtn.classList.contains('active') && window.innerWidth <= 1200){
-            console.log("ajjjaj")
             document.body.style.overflowY = "hidden";
         } else{
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowY = "scroll";
         }
     });
     notificationsBtn.addEventListener('click', () => {
@@ -89,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(notificationsBtn.classList.contains('active') && window.innerWidth <= 1200){
             document.body.style.overflowY = "hidden";
         } else{
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowY = "scroll";
         }
     });
     profileBtn.addEventListener('click', () => {
@@ -102,20 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if(btn.classList.contains('active') && window.innerWidth <= 1200){
             document.body.style.overflowY = "hidden";
         } else{
-            document.body.style.overflowY = "auto";
+            document.body.style.overflowY = "scroll";
         }
     })
     //Navbar toggle
    const middleLinks = document.querySelectorAll('.middle_header a');
    const navbar = document.querySelector('.right_header');
    const main = document.querySelector('main');
-   console.log(navbar);
    let toggleNav;
    middleLinks.forEach((link) => {
         if(link.getAttribute('href').slice(1) === 'toggle') toggleNav = link;
 
    });
-   console.log(aside.children)
    toggleNav.addEventListener('click', () => {
         navbar.classList.toggle('showNav');
         if(getComputedStyle(navbar.children[0]).visibility === 'hidden'){
@@ -150,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     window.addEventListener('resize', () => {
-        console.log(window.innerWidth);
         if(window.innerWidth > 1200){
             
             if(navbar.classList.contains('showNav')){
@@ -169,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }             
             navbar.children[0].style.visibility = 'visible';
             if(document.body.style.overflowY === "hidden"){
-                document.body.style.overflowY = "auto";
+                document.body.style.overflowY = "scroll";
             }
             if(!aside.classList.contains('displayAside')) section.style.transform = ' translateX(calc(100%/3))';
 
@@ -195,61 +191,96 @@ document.addEventListener('DOMContentLoaded', () => {
         
     });
     
-
+    //Toggle between friend request and suggestions
+    const usersLinks = document.querySelectorAll('.users ul li a');
+    let userSuggestions;
+    let userRequests;
+    const suggestionsDisplay = document.querySelector('.suggestions');
+    const requestDisplay = document.querySelector('.requests');
+    usersLinks.forEach(userlink => {
+        if(userlink.getAttribute('href').slice(1) === "Suggestions") userSuggestions = userlink;
+        if(userlink.getAttribute('href').slice(1) === "Requests") userRequests = userlink;
+    });
+   
+    userSuggestions.addEventListener('click', () => {
+        if(suggestionsDisplay.classList.contains('noDisplay')){
+            suggestionsDisplay.classList.remove('noDisplay');
+            userSuggestions.classList.add('active'); 
+            requestDisplay.classList.add('noDisplay');
+            userRequests.classList.remove('active');  
+        }
+    });
+    userRequests.addEventListener('click', () => {
+        if(requestDisplay.classList.contains('noDisplay')){
+            requestDisplay.classList.remove('noDisplay');
+            userRequests.classList.add('active');
+            suggestionsDisplay.classList.add('noDisplay');
+            userSuggestions.classList.remove('active'); 
+        }
+    });
+    //Posting inputs
     const inputContainer = document.querySelector('.input-container');
     const input = document.querySelector('.input-container form input');
-    const textPost = document.querySelector('.text-post h3');
-    const imagePost = document.querySelector('.image-post h3');
+    const textPost = document.querySelector('.text-post');
+    const imagePost = document.querySelector('.image-post');
     
     textPost.addEventListener('click', () => {
         if(!inputContainer.classList.contains('displayed')){
             inputContainer.classList.add('displayed');
-            textPost.classList.add('active');
+            textPost.firstElementChild.classList.add('active');
         } else {
             inputContainer.classList.remove('displayed');
-            textPost.classList.remove('active');
+            textPost.firstElementChild.classList.remove('active');
         }
         if(input.getAttribute('type') !== 'text'){
             input.setAttribute('type', 'text');
             input.setAttribute('id', 'text');
             input.setAttribute('name', 'text');
             inputContainer.classList.add('displayed');
+            textPost.firstElementChild.classList.add('active');
         }
         
-        imagePost.classList.remove('active');
+        imagePost.firstElementChild.classList.remove('active');
         
     });
     imagePost.addEventListener('click', () => {
         if(!inputContainer.classList.contains('displayed')){
             inputContainer.classList.add('displayed');
-            imagePost.classList.add('active');
+            imagePost.firstElementChild.classList.add('active');
         } else{
             inputContainer.classList.remove('displayed');
-            imagePost.classList.remove('active')
+            imagePost.firstElementChild.classList.remove('active')
         }
         if(input.getAttribute('type') !== 'file'){
             input.setAttribute('type', 'file');
             input.setAttribute('id', 'image');
             input.setAttribute('name', 'image');
             inputContainer.classList.add('displayed');
+            imagePost.firstElementChild.classList.add('active');
         }
-        textPost.classList.remove('active');
+        textPost.firstElementChild.classList.remove('active');
     });
 
     //Kommentelés
+
    const commentBtns = document.querySelectorAll('.comment');
+   const posts = document.querySelectorAll('.posts table');
    const commentDisplays = document.querySelectorAll('.comments');
    const commentTextarea = document.querySelectorAll('.user-comment');
-
+   const commnetsHeight = Number(window.getComputedStyle(commentDisplays[0].firstElementChild.firstElementChild).height.slice(0, length-2));
    commentBtns.forEach((btn, index) => {
+    commentDisplays.get
         btn.addEventListener('click', () => {
             btn.classList.toggle('active');
             if(getComputedStyle(commentDisplays[index]).display === 'none'){
                 commentDisplays[index].style.display = 'table-row';
                 commentTextarea[index].style.display = 'table-row';
+                commentDisplays[index].firstElementChild.firstElementChild.style.height = "240px";
+                commentTextarea[index].scrollIntoView({block: "end"});
             } else{
                 commentDisplays[index].style.display = 'none';
                 commentTextarea[index].style.display = 'none';
+                posts[index].scrollIntoView({block: "start"});
             }
         });
    });

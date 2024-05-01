@@ -3,12 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const friends = document.querySelector('.friends');
     const about = document.querySelector('.user-data');
     const navLinks = document.querySelectorAll('nav a');
-    console.log(navLinks);
     let postsLink;
     let friendsLink; 
     let aboutLink;
     navLinks.forEach(navLink => {
-        console.log(navLink.getAttribute('href'));
         if(navLink.getAttribute('href').slice(1) === 'Posts') postsLink = navLink;
         if(navLink.getAttribute('href').slice(1) === 'Friends') friendsLink = navLink;
         if(navLink.getAttribute('href').slice(1) === 'About') aboutLink = navLink;
@@ -17,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     postsLink.addEventListener('click', () => {
         posts.classList.remove('noDisplay');
         postsLink.classList.add('active');
+        
         friends.classList.add('noDisplay');
         friendsLink.classList.remove('active');
         about.classList.add('noDisplay');

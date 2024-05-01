@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/0c6bdff3b5.js" crossorigin="anonymous"></script>
+    <script src="../../js/externalLibs/all.js"></script>
     <link rel="stylesheet" href="../../css/styles.css">
+    
+
     <title>Visage</title>
 </head>
 <body>
@@ -192,27 +194,19 @@
         <aside>
         <div class="messenger">
             <ul class="message-friends">
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Jani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Dani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Karcsi</li>
-                <li><div></div>Juli</li>
-                <li class="active"><div><img src="../../../public/Images/macska.jpg" alt=""></div>Mari</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Mari</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Jani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Dani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Karcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Jani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Dani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Karcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Mari</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Jani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Dani</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Karcsi</li>
-                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href="" class="active"><div><img src="../../../public/Images/macska.jpg" alt=""></div>Mari</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
+                <li><a href=""><div><img src="../../../public/Images/macska.jpg" alt=""></div>Julcsi</a></li>
             </ul>
             <div class="chat">
                 <div class="chat-heading">
@@ -243,68 +237,91 @@
             </div>
         </div>
         <div class="users">
-           <table>
+            <ul>
+                <li><a href="#Suggestions" class="active"><h3>Suggestions</h3></a></li>
+                <li><a href="#Requests"><h3>Requests</h3></a></li>
+            </ul>
+            <table class="suggestions">
                 <tr>
-                    <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                    <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
                 <tr>
-                    <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
-                    <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
-                </tr>
-                <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
-                    <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
-                </tr>
-                <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
-                    <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
-                </tr>
-                <tr>
-                    <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
-                    <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
-                </tr>
-                <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
-                    <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
-                </tr>
-                <tr>
-                <td><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></td>
+                <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kalányos János</h2></td>
                     <td><button>Add Friend</button></td>
                 </tr>
-           </table>
+            </table>
+            <table class="requests noDisplay">
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kálmán János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+                <tr>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><h2>Kalányos János</h2></td>
+                    <td><button>Accept</button></td>
+                    <td><button>Decline</button></td>
+                </tr>
+            </table>
         </div>
         <div class="notifications">
 
