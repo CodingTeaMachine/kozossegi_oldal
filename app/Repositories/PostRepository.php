@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Enums\PostType;
 use App\Models\Domain\Comment;
 use App\Models\DTO\Post\PostForUserDTO;
 use Illuminate\Support\Facades\DB;
