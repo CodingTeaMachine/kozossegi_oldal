@@ -48,7 +48,9 @@
             <div class="posts">
             <table>
                 <tr>
-                    <th colspan="2"><div><img src="../../../public/Images/macska.jpg" alt="valaki"></div><h2>Username</h2></th>
+                    <th colspan="2">
+                        <div><img src="../../../public/Images/macska.jpg" alt="valaki"></div>
+                        <h2>Username</h2></th>
                 </tr>
                 <tr>
                     <th colspan="2"><img src="../../../public/Images/forest.png"></th>
@@ -59,19 +61,29 @@
                 </tr>
                 <tr class="comments">
                     <td colspan="2">
-                            <ul>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Azta kurva</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Bojler eladó</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>irni setucc</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
-                            </ul>
+                        <ul>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Azta kurva</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Bojler eladó</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>irni setucc</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque
+                                    tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus
+                                    saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
+                        </ul>
                     </td>
                 </tr>
                 <tr class="user-comment">
                     <td colspan="2">
                         <form action="">
                             <div>
-                                <textarea name="comment" id="comment" placeholder="write something..."></textarea >
+                                <textarea name="comment" id="comment" placeholder="write something..."></textarea>
                                 <input type="submit" name="submitComment" id="submitComment">
                             </div>
                         </form>
@@ -91,12 +103,22 @@
                 </tr>
                 <tr class="comments">
                     <td colspan="2">
-                            <ul>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Azta kurva</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Bojler eladó</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>irni setucc</p></li>
-                                <li><div><img src="../../../public/Images/macska.jpg" alt=""></div><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
-                            </ul>
+                        <ul>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Azta kurva</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Bojler eladó</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>irni setucc</p></li>
+                            <li>
+                                <div><img src="../../../public/Images/macska.jpg" alt=""></div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus, velit doloremque
+                                    tenetur officia impedit dolores cumque veritatis expedita necessitatibus optio minus
+                                    saepe atque ea ab non libero debitis dolorem sapiente!</p></li>
+                        </ul>
                     </td>
                 </tr>
                 <tr class="user-comment">
@@ -110,9 +132,9 @@
                     </td>
                 </tr>
             </table>
-            </div>
-        </section>
-        <aside>
+        </div>
+    </section>
+    <aside>
         <div class="messenger">
             <ul class="message-friends">
                 <li><a href=""><img src="../../../public/Images/macska.jpg" alt="">Julcsi</a></li>
@@ -134,7 +156,9 @@
                     <h1>Mari</h1>
                 </div>
                 <div class="chat-messages">
-                    <div class="recived-chat"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error eum quaerat debitis sapiente. Dolorum iusto hic quae repellendus nam esse est tempora, dolor labore voluptates quibusdam saepe, eius deserunt. Ipsum?</p></div>
+                    <div class="recived-chat"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error eum
+                            quaerat debitis sapiente. Dolorum iusto hic quae repellendus nam esse est tempora, dolor
+                            labore voluptates quibusdam saepe, eius deserunt. Ipsum?</p></div>
                     <div class="sent-chat"><p>Szia uram!</p></div>
                     <div class="recived-chat"><p>Szia tesomsz</p></div>
                     <div class="sent-chat"><p>Szia uram!</p></div>
@@ -151,8 +175,8 @@
                 </div>
                 <div class="user-input">
                     <form action="">
-                            <textarea name="privMess" id="privMess"></textarea>
-                            <input type="submit" value="Send">
+                        <textarea name="privMess" id="privMess"></textarea>
+                        <input type="submit" value="Send">
                     </form>
                 </div>
             </div>
@@ -191,22 +215,30 @@
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
+                    <td>
+                        <button>Add Friend</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
+                    <td>
+                        <button>Add Friend</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Add Friend</button></td>
+                    <td>
+                        <button>Add Friend</button>
+                    </td>
                 </tr>
                 <tr>
-                <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
+                    <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kalányos János</h2></td>
-                    <td><button>Add Friend</button></td>
+                    <td>
+                        <button>Add Friend</button>
+                    </td>
                 </tr>
             </table>
             <table class="requests noDisplay">
@@ -243,26 +275,42 @@
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Accept</button></td>
-                    <td><button>Decline</button></td>
+                    <td>
+                        <button>Accept</button>
+                    </td>
+                    <td>
+                        <button>Decline</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Accept</button></td>
-                    <td><button>Decline</button></td>
+                    <td>
+                        <button>Accept</button>
+                    </td>
+                    <td>
+                        <button>Decline</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kálmán János</h2></td>
-                    <td><button>Accept</button></td>
-                    <td><button>Decline</button></td>
+                    <td>
+                        <button>Accept</button>
+                    </td>
+                    <td>
+                        <button>Decline</button>
+                    </td>
                 </tr>
                 <tr>
                     <td><a href=""><img src="../../../public/Images/macska.jpg" alt="" class="avatar"></a></td>
                     <td><h2>Kalányos János</h2></td>
-                    <td><button>Accept</button></td>
-                    <td><button>Decline</button></td>
+                    <td>
+                        <button>Accept</button>
+                    </td>
+                    <td>
+                        <button>Decline</button>
+                    </td>
                 </tr>
             </table>
         </div>
