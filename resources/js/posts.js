@@ -48,7 +48,6 @@ imagePost.addEventListener('click', () => {
  const posts = document.querySelectorAll('.posts table');
  const commentDisplays = document.querySelectorAll('.comments');
  const commentTextarea = document.querySelectorAll('.user-comment');
- const commnetsHeight = Number(window.getComputedStyle(commentDisplays[0].firstElementChild.firstElementChild).height.slice(0, length-2));
  commentBtns.forEach((btn, index) => {
   commentDisplays.get
       btn.addEventListener('click', () => {

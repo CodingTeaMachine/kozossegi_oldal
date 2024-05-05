@@ -2,7 +2,6 @@
     @vite('resources/js/posts.js')
 @endsection
 @extends('layouts.inner_app')
-
     <header> 
         <div class="left_header">
             <h1>V</h1>
